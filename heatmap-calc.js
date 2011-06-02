@@ -1,11 +1,10 @@
-
 onmessage = function(e){
     value = e.data.value || {};
-    for(var pos in e.data.data){
+    for(var index in e.data.keys){
+		var pos=e.data.keys[index];
         var data = e.data.data[pos];
-        var radius = Math.floor(data / e.data.step);
-        
-        var x = Math.floor(pos%e.data.width);
+	var radius = Math.floor(data / e.data.step);
+	var x = Math.floor(pos%e.data.width);
         var y = Math.floor(pos/e.data.width);
         
         // calculate point x.y 
@@ -25,7 +24,7 @@ onmessage = function(e){
                     continue;
                 } else {
                     var v =data*(1-2*dist/radius-Math.pow(dist/radius,2));      
-       		    v=v<0?0:v;         
+                    v=v<0?0:v;
                     var id = scanx+scany*e.data.width ;
                 
                     if(value[id]){
@@ -39,4 +38,3 @@ onmessage = function(e){
     }
     postMessage({'value': value});
 }
-

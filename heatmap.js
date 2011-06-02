@@ -30,7 +30,7 @@ var HeatMap = function(canvas){
         return null;
     }
     
-    this.worker = new Worker('heatmap-calc.js');
+    this.worker = new Worker('delegate.js');
     
     this.width = this.canvas.width;
     this.height = this.canvas.height;
